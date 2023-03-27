@@ -1,5 +1,5 @@
 ---
- - name: Ansible apt module examples
+ - name: Ansible update apt module cache
    hosts: all
    become: true
    tasks: 
