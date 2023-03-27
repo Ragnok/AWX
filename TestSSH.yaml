@@ -3,7 +3,7 @@
   gather_facts: no
 
   tasks:
-    - name: check for server ssh
+    - name: checking for server ssh
       wait_for:
         port: 22
         state: started

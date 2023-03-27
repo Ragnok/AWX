@@ -7,5 +7,3 @@
     tasks:
       - name: Ping
         ansible.builtin.ping:
-      - ping
-        ping:
