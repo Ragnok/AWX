@@ -1,0 +1,29 @@
+---
+  - name: Update
+    - hosts: all
+      gather_facts: True
+      become: yes
+      become_user: root
+      vars:
+        mypi:
+          - pi1
+          - pi2
+
+      tasks:
+        - name: print var
+          ansible.builtin.debug:
+            msg:  "value {{ mypi }}
+        - name: update values
+          apt:
+            update_cache: true
+            cache_valid_time: 3600
+        - name: upgrade modules
+          apt:
+            upgrade=yes
+
+      handlers:
+        - name: reload
+          ansible.builtin.debug:
+            msg: "Rebooting"
+
+...

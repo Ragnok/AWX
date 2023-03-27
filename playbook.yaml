@@ -1,0 +1,22 @@
+---
+  - name: Update
+    - hosts: all
+      gather_facts: True
+      become: yes
+      become_user: root
+      vars:
+        mypi:
+          - pi1
+          - pi2
+
+      tasks:
+        - name: print var
+          ansible.builtin.debug:
+            msg:  "value {{ mypi }}
+
+      handlers:
+        - name: reload
+          ansible.builtin.debug:
+            msg: "Rebooting"
+
+...
