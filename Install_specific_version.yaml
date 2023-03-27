@@ -1,0 +1,11 @@
+---
+ - name: Ansible apt module examples
+   hosts: web
+   become: true
+   tasks: 
+    - name: Ansible apt install tomcat Version 8.0.32
+      register: updatesys
+      apt:
+        update_cache: yes
+        name: tomcat8=8.0.32-1ubuntu1.11
+        state: present
