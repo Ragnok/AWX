@@ -1,22 +1,40 @@
----
-  - name: Update
-    - hosts: all
-      gather_facts: True
-      become: yes
-      become_user: root
-      vars:
-        mypi:
-          - pi1
-          - pi2
+# Run with `ansible-playbook ~/raspberry-config.yaml`
+- hosts: all
+  gather_facts: no
+  remote_user: root
+  tasks:
 
-      tasks:
-        - name: print var
-          ansible.builtin.debug:
-            msg:  "value {{ mypi }}
+    - name: Update
+      - hosts: all
+        gather_facts: True
+        become: yes
+        become_user: root
+        vars:
+          mypi:
+            - pi1
+            - pi2
 
-      handlers:
-        - name: reload
-          ansible.builtin.debug:
-            msg: "Rebooting"
+    - name: Install packages
+      apt:
+        update_cache: yes
+        autoremove: yes
+        state: present
+        pkg:
+          - samba
+          - samba-common-bin
+          - smbclient
+          - python-mako
+          - vim
+          - glances
+
+
+    - name: print var
+      ansible.builtin.debug:
+        msg:  "value {{ mypi }}
+
+  handlers:
+    - name: reload
+      ansible.builtin.debug:
+        msg: "Rebooting"
 
 ...
