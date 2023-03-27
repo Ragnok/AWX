@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: no
+  become: true
+  remote_user: root
+  
+  tasks:
+    - name: Update
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+    - name: Update
+      apt: upgrade = yes
+          
+  handlers:
+    - name: print var
+      ansible.builtin.debug:
+        msg: value {{ mypi }}
+        msg2: Rebooting
