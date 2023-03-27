@@ -1,8 +1,11 @@
 ---
   - name: Check uptime
     hosts: all
+    vars:
+      pilist
+
     tasks:
       - name: Ping
         ansible.builtin.ping:
       - ping
-        crash: data
+        ping:
