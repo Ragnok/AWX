@@ -1,0 +1,8 @@
+---
+  - name: Check uptime
+    hosts: all
+    tasks:
+      - name: Ping
+        ansible.builtin.ping:
+      - ping
+        crash: data

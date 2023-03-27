@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use JSON;
+
+open PACKAGES, "dpkg -l|";
+
+my @packages;
+
+my %whitelist = (
+    ...
+);
+
+while(<PACKAGES>) {
+    next unless /^ii\s+(\S+)/;
+
+    my $pack = $1;
+
+    next if(exists($whitelist{$pack}));
+
+    if($pack =~ /(.*):armhf/) {
+        $pack = $1;
+    }
+
+    push @packages, $1;
+}
+
+my %hash;
+
+$hash{cleanable_packages} = \@packages;
+
+print to_json(\%hash);
