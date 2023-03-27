@@ -12,7 +12,7 @@
       tasks:
         - name: print var
           ansible.builtin.debug:
-            msg:  "value {{ mypi }}
+            msg:  "value {{ mypi }}"
         - name: update values
           apt:
             update_cache: true
