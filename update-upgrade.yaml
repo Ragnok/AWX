@@ -1,6 +1,6 @@
 ---
  - name: Ansible apt module examples
-   hosts: web
+   hosts: all
    become: true
    tasks: 
     - name: Ansible apt update cache if it is older than 1 hour
