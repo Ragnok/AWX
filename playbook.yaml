@@ -23,6 +23,7 @@
           - python-mako
           - vim
           - glances
+          
   handlers:
     - name: print var
       ansible.builtin.debug:
