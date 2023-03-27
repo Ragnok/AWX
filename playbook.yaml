@@ -11,6 +11,7 @@
         mypi:
           - pi1
           - pi2
+          
     - name: Install packages
       apt:
         update_cache: yes
