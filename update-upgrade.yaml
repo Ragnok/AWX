@@ -7,9 +7,9 @@
       register: updatesys
       apt:
         upgrade: yes
-        name: "*"
-        state: latest
         update_cache: yes
+#name: "*"
+        state: latest
         cache_valid_time: 86400 #one day
 
     - name: Display the last line of the previous task to check the stats
