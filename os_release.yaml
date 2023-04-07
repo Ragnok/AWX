@@ -4,7 +4,7 @@
   become: true
   become_method: sudo
   tasks:
-    - shell: cat /proc/version
+    - shell: lsb_release -a
       register: shell_result
 
     - debug:
