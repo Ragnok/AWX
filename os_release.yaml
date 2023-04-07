@@ -2,6 +2,7 @@
 - name: Report OS release
   hosts: all
   become: true
+  become_method: sudo
   tasks:
     - shell: cat /proc/version
       register: shell_result
