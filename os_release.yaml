@@ -4,7 +4,7 @@
   become: true
   become_method: sudo
   tasks:
-    - shell: lsb_release -a
+    - shell: uname -a
       register: shell_result
 
     - debug:
