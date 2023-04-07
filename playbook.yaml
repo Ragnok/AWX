@@ -1,11 +1,12 @@
 ---
-- hosts: all
-  gather_facts: no
-  tasks:
-    shell: "sleep 5 && reboot"
+  - name: Reboot endpoints
+    hosts: all
+    become: true
+    tasks:
+      shell: "sleep 5 && reboot"
 
-    async: 1
-    poll: 0
+      async: 1
+      poll: 0
 
 - name: Wait for the machine to come back online
   wait_for_connection:
