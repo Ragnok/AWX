@@ -1,7 +1,9 @@
 ---
-- hosts: all
+- name: Report OS release
+  hosts: all
+  become: true
   tasks:
-    - shell: lsb_release -a
+    - shell: cat /proc/version
       register: shell_result
 
     - debug:
