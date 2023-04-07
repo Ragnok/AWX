@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - shell: lsb_release -a
+      register: shell_result
+
+    - debug:
+        var: shell_result.stdout_lines
+
+#lsb_release -a
+#uname -a
+#cat /proc/version
