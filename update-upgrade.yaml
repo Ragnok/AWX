@@ -6,9 +6,11 @@
     - name: Ansible Update Cache and Upgrade all Packages
       register: updatesys
       apt:
+        upgrade: yes
         name: "*"
         state: latest
         update_cache: yes
+        cache_valid_time: 86400 #one day
 
     - name: Display the last line of the previous task to check the stats
       debug:
