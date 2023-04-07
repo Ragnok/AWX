@@ -1,31 +1,15 @@
 ---
 - hosts: all
   gather_facts: no
-  remote_user: root
   tasks:
-    - name: Update
-      gather_facts: true
-      become: yes
-      become_user: root
-      vars:
-        mypi:
-          - pi1
-          - pi2
-    - name: Install packages
-      apt:
-        update_cache: yes
-        autoremove: yes
-        state: present
-        pkg:
-          - samba
-          - samba-common-bin
-          - smbclient
-          - python-mako
-          - vim
-          - glances
-          
-  handlers:
-    - name: print var
-      ansible.builtin.debug:
-        msg: value {{ mypi }}
-        msg2: Rebooting
+    shell: "sleep 5 && reboot"
+
+    async: 1
+    poll: 0
+
+- name: Wait for the machine to come back online
+  wait_for_connection:
+    connect_timeout: 60
+    sleep: 5
+    delay: 5
+    timeout: 300
