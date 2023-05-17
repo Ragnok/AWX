@@ -1,0 +1,45 @@
+---
+- hosts: all
+  become: True
+  gather_facts: True
+  
+  vars:
+    REBOOT: True #Should i reboot at the end of this playbook?
+    UPDATE: True
+    HOSTNAME: "picasa"
+    MEMSPLIT: "128"
+    BOOTBEHAVIOUR: "B1" #B1 cli, B2 cli autologin, B3 desktop, B4 desktop autologin
+    LOCALE: "it_IT.UTF-8"
+    XKBLAYOUT: "it" #default "gb"
+    NETNAMES: False
+    SSH: True
+    SERIAL: True
+    VNC: False
+    SPI: False
+    I2C: True
+    ONEWIRE: False
+    RGPIO: False
+    WIFI_COUNTRY: "IT"
+    BOOTWAIT: False
+    BOOTSPLASH: False
+    OVERSCAN: False
+    OVERCLOCK: False
+    HDMI_GROUP: False
+    HDMI_MOD: False
+    PIXDUB: False
+    AUDIO_OUT: "0" #0 Auto, 1 Force 3.5mm, 2 Force hdmi
+    GLDRIVER: False #G1 Full KMS, G2 Fake KMS, G3 Legacy
+
+  tasks:    - name: Check if FS is expandable
+      shell: "raspi-config nonint get_can_expand"
+      register: fs_filled
+      changed_when: False
+
+    - name: Print if FS is expandable or not
+      debug:
+        msg: "Filesystem is expandable! [{{ fs_filled.stdout }}]"
+      when: fs_filled.stdout == '0'
+
+    - name: Expand Filesystem
+      shell: "raspi-config nonint do_expand_rootfs"
+      
