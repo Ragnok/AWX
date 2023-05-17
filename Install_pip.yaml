@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Install pip
+      apt:
+        name:
+          - python-pip
+          - python-setuptools
+        state: latest
