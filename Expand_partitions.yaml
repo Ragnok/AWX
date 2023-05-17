@@ -10,11 +10,11 @@
     register: fs_filled
     changed_when: False
 
-    - name: Print if FS is expandable or not
-      debug:
-        msg: "Filesystem is expandable! [{{ fs_filled.stdout }}]"
-      when: fs_filled.stdout == '0'
+  - name: Print if FS is expandable or not
+    debug:
+      msg: "Filesystem is expandable! [{{ fs_filled.stdout }}]"
+    when: fs_filled.stdout == '0'
 
-    - name: Expand Filesystem
-      shell: "raspi-config nonint do_expand_rootfs"
+  - name: Expand Filesystem
+    shell: "raspi-config nonint do_expand_rootfs"
       
