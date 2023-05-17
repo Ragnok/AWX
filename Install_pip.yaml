@@ -6,6 +6,6 @@
     - name: Install pip
       apt:
         name:
-          - python-pip
+          - python3-pip
           - python-setuptools
         state: latest
