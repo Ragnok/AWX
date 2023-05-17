@@ -4,14 +4,10 @@
   tasks:
   become: true
   gather_facts: true
-- name: Output disk information
-    debug:
-      var: hostvars[inventory_hostname].ansible_devices
 
-- name: Check if oracle linux is installed
-    shell: |
-    cat: /etc/system-release
-    register: os_name
-    ignore_errors: yes
-- debug:
-    msg: "{{os_name.stdout}}"```
+- name: Install pip
+  apt:
+    name:
+      - python-pip
+      - python-setuptools
+    state: latest
