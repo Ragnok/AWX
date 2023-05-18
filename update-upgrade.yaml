@@ -2,17 +2,9 @@
  - name: Ansible apt module examples
    hosts: all
    become: true
-   tasks: 
-    - name: Ansible Update Cache and Upgrade all Packages
-      register: updatesys
-      apt:
-        upgrade: yes
-        update_cache: yes
-#name: "*"
-        state: latest
-        cache_valid_time: 86400 #one day
-
-    - name: Display the last line of the previous task to check the stats
-      debug:
-        msg:  "{{updatesys.stdout_lines|last}}"
-        
+   tasks:
+   - name: Update and upgrade apt packages
+     apt:
+       upgrade: yes
+       update_cache: yes
+       cache_valid_time: 86400 
