@@ -1,7 +1,5 @@
 ---
 - hosts: all
-  sudo: yes
-  sudo_user: secengadmin
 #  become: true
 #  become_method: su
 #  become_user: secengadmin
@@ -11,3 +9,7 @@
       upgrade: "yes"
       update_cache: yes
       cache_valid_time: 86400 # 1 day
+    become: true
+    become_method: su
+    become_user: secengadmin
+    become_flags: '-s /bin/sh'
