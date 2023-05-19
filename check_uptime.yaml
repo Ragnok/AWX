@@ -1,17 +1,6 @@
 ---
   - name: Check uptime
     hosts: all
-    ACTION_WARNINGS:
-      name: Toggle action warnings
-      default: False
-      description:
-        - By default Ansible will issue a warning when received from a task action (module or action plugin)
-        - These warnings can be silenced by adjusting this setting to False.
-      env: [{name: ANSIBLE_ACTION_WARNINGS}]
-      ini:
-      - {key: action_warnings, section: defaults}
-      type: boolean
-      version_added: "2.5"
     tasks:
       - name: Execute the Uptime command over Command module
         register: uptimeoutput
