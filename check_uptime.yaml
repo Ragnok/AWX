@@ -3,7 +3,8 @@
   hosts: all
   tasks:
     - name: Execute the Uptime command over Command module
-      ansible_python_interpreter: auto_legacy
+      vars:
+        ansible_python_interpreter: auto_legacy
       register: uptimeoutput
       command: uptime
     - debug:
