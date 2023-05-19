@@ -1,6 +1,8 @@
 ---
 - hosts: all
-  become: true
+  sudo: yes
+  sudo_user: secengadmin
+#  become: true
 #  become_method: su
 #  become_user: secengadmin
   tasks:
