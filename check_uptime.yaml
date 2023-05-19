@@ -10,3 +10,6 @@
 
       - debug:
           var: uptimeoutput.stdout_lines
+          args:
+            warn: false
+
