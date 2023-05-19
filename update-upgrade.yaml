@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: yes
+  become_user: secengadmin
   tasks:
   - name: Update and upgrade apt packages
     apt:
