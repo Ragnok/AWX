@@ -1,6 +1,7 @@
 ---
   - name: Check uptime
     hosts: all
+      ansible_python_interpreter: auto_legacy
     tasks:
       - name: Execute the Uptime command over Command module
         register: uptimeoutput
