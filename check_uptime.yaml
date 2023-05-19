@@ -5,6 +5,6 @@
     - name: Execute the Uptime command over Command module
       register: uptimeoutput
       command: uptime
-          ansible_python_interpreter: auto_legacy_silent
+      ansible_python_interpreter: auto_legacy_silent
     - debug:
         var: uptimeoutput.stdout_lines
