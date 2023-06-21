@@ -4,13 +4,3 @@
     repo: deb https://deb.thehive-project.org/ stable main
     state: present
     filename: cortex
-- hosts: all
-  become: true
-  tasks:
-    - name: Update and upgrade apt packages
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
-    - name: Install cortex
-      apt:
-        name:
-          - cortex
-        state: latest
