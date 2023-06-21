@@ -1,5 +1,6 @@
 ---
 - name: Add specified repository into sources list using specified filename
+  hosts: all
   ansible.builtin.apt_repository:
     repo: deb https://deb.thehive-project.org/ stable main
     state: present
